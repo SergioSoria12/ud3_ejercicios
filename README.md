@@ -76,7 +76,7 @@ La instrucción `$table->string('email')->primary();` crea una columna llamada `
 
 
 
-### **Total de tablas definidas: 9**
+### **Total de tablas definidas: 8**
 
 - `users`
 
@@ -94,4 +94,61 @@ La instrucción `$table->string('email')->primary();` crea una columna llamada `
 
 - `failed_jobs`
 
-"""
+# Respuesta Ejercicio 5
+
+## ¿Cuantas tablas aparecen?
+
+Aparecen 9 tablas porque se creo la tabla `migrations` (usada por Laravel para llevar un registro de las migraciones que se han ejecutado en la BBDD y tiene el proposito de que cada migracion se ejecute una sola vez y en el orden correcto), la cual siempre estara presente en cualquier proyecto Laravel que use migraciones.
+
+# Respuesta Ejercicio 6
+
+## ¿Que hacen los siguientes comandos?
+
+- `php artisan migrate`:  Ejecuta las migraciones pendientes.
+
+- `php artisan migrate:status`: Muestra el estado de las migraciones.
+
+- `php artisan migrate:rollback`: Revierte la última migración.
+
+- `php artisan migrate:reset`: Revierte todas las migraciones.
+
+- `php artisan migrate:refresh`: Revierte y vuelve a ejecutar todas las migraciones.
+
+- `php artisan make:migration`: Crea un nuevo archivo de migración.
+
+- `php artisan migrate --seed`: Ejecuta migraciones y carga datos de prueba.
+
+# Respuesta Ejercicio 8
+
+## ¿Qué pasos debemos dar si queremos añadir el campo `$table->string('apellido');` a la tabla alumnos del ejercicio anterior?
+
+1. Creamos una nueva migración:
+
+`php artisan make:migration add_apellido_to_alumnos`
+
+2. Edita la migración creada en el archivo database/migrations/<timestamp>_add_apellido_to_alumnos.php:
+
+```php
+    public function up(): void
+{
+    Schema::table('alumnos', function (Blueprint $table) {
+        $table->string('apellido'); // Agrega el campo apellido
+    });
+}
+
+public function down(): void
+{
+    Schema::table('alumnos', function (Blueprint $table) {
+        $table->dropColumn('apellido'); // Elimina el campo si se revierte la migración
+    });
+}
+```
+3. Ejecuta la migración:
+
+`php artisan migrate`
+
+
+
+
+
+
