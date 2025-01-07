@@ -124,28 +124,28 @@ Aparecen 9 tablas porque se creo la tabla `migrations` (usada por Laravel para l
 
 1. Creamos una nueva migración:
 
-`php artisan make:migration add_apellido_to_alumnos`
+    `php artisan make:migration add_apellido_to_alumnos`
 
 2. Edita la migración creada en el archivo database/migrations/<timestamp>_add_apellido_to_alumnos.php:
 
-```php
-    public function up(): void
-{
-    Schema::table('alumnos', function (Blueprint $table) {
-        $table->string('apellido'); // Agrega el campo apellido
-    });
-}
+    ```php
+        public function up(): void
+    {
+        Schema::table('alumnos', function (Blueprint $table) {
+            $table->string('apellido'); // Agrega el campo apellido
+        });
+    }
 
-public function down(): void
-{
-    Schema::table('alumnos', function (Blueprint $table) {
-        $table->dropColumn('apellido'); // Elimina el campo si se revierte la migración
-    });
-}
-```
+    public function down(): void
+    {
+        Schema::table('alumnos', function (Blueprint $table) {
+            $table->dropColumn('apellido'); // Elimina el campo si se revierte la migración
+        });
+    }
+    ```
 3. Ejecuta la migración:
 
-`php artisan migrate`
+    `php artisan migrate`
 
 
 
