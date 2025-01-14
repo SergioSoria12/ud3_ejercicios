@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notas', function (Blueprint $table) {
+        Schema::create('alumnos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('alumno_id')->constrained('alumnos'); // Relación con alumnos
-            $table->foreignId('asignatura_id')->constrained('asignaturas'); // Relación con asignaturas
-            $table->integer('nota');
+            $table->string('nombre');
+            $table->string('email')->unique(); 
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notas');
+        Schema::dropIfExists('alumnos');
     }
 };

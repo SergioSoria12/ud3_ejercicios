@@ -13,7 +13,10 @@ class AlumnosTableSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
+
     {
+        DB::table('alumnos')->truncate();
+        
         DB::table('alumnos')->insert([
             [
                 'nombre' => 'Juan Pérez',

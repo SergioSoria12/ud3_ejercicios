@@ -148,7 +148,75 @@ Aparecen 9 tablas porque se creo la tabla `migrations` (usada por Laravel para l
     `php artisan migrate`
 
 
+# 3.2 Modelos de Laravel
 
+## Way of Working
+
+Este apartado detalla los requisitos tecnológicos y los pasos necesarios para configurar y ejecutar correctamente el proyecto Laravel de la UD3.2.
+
+### Requisitos tecnológicos
+
+1. **Entorno de desarrollo**:
+   - Sistema operativo: Windows, macOS o Linux.
+   - PHP 8.1 o superior.
+   - Composer 2.x (gestor de dependencias de PHP).
+   - Laravel Framework 10.x.
+
+2. **Base de datos**:
+   - MariaDB 10.6 o superior.
+   - Se recomienda usar Docker para gestionar la base de datos de manera sencilla.
+
+3. **Herramientas adicionales**:
+   - Postman (para realizar pruebas de los endpoints API).
+   - Git (para clonar y gestionar el repositorio).
+   - Docker Desktop (opcional, pero recomendado para configurar servicios).
+
+---
+
+### Pasos para configurar el proyecto
+
+1. **Clonar el repositorio**:
+   ```bash
+   git clone https://github.com/tu-usuario/ud3_ejercicios.git
+   cd ud3_ejercicios
+
+2. **Instala dependencias del proyecto**:
+    ```bash
+    composer install
+
+3. **Configura el archivo `.env`. Copia el de ejemplo y editalo**:
+    ```bash
+    cp .env.example .env
+
+4. **Actualiza las siguientes variables con los datos de tu base de datos**:
+    ```bash
+    DB_CONNECTION=mariadb DB_HOST=127.0.0.1 DB_PORT=3306 DB_DATABASE=gestion_notas DB_USERNAME=root DB_PASSWORD=m1_s3cr3t
+
+5. **Genera la clave de la aplicación**:
+    ```bash
+    php artisan key:generate
+
+6. **Ejecuta las migraciones y seeders para preparar la base de datos**:
+    ```bash
+    php artisan migrate --seed
+
+7. **Inicia el servidor de desarrollo**:
+    ```bash
+    php artisan serve
+
+8. **Prueba de los endpoints API**:
+    ```bash
+    1. Importa las colecciones de Postman:
+    - Abre Postman y selecciona la opción **Importar**.
+    - Carga el archivo `postman_collection.json` ubicado en la raiz del proyecto.
+
+    2. Realiza las pruebas usando las colecciones importadas para verificar las operaciones CRUD.
+
+9. **Recomendaciones adicionales**:
+    - Verifica que todos los tests pasen correctamente con:
+        ```bash
+        php artisan test
+    - Manten el repositorio actualizado y realiza commits regularmente
 
 
 
