@@ -49,4 +49,11 @@ class AsignaturaController extends Controller
 
         return response()->noContent();
     }
+
+    //Listar los alumnos inscritos en una asignatura especifica
+    public function alumnos($id)
+    {
+        $asignatura = Asignatura::with('alumnos')->findOrFail($id);
+        return response()->json($asignatura->alumnos);
+    }
 }

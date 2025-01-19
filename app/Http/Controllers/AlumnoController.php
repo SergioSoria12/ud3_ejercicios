@@ -63,4 +63,11 @@ class AlumnoController extends Controller
 
         return response()->json(null, 204);  // Retorna una respuesta vacia (204 No Content)
     }
+
+    //Obtener asignaturas de un alumno
+    public function asignaturas($id)
+    {
+        $alumno = Alumno::with('asignaturas')->findOrFail($id);
+        return response()->json($alumno->asignaturas);
+    }
 }
